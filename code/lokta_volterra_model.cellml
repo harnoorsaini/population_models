@@ -1,0 +1,75 @@
+<?xml version='1.0'?>
+<model name="population_model" xmlns="http://www.cellml.org/cellml/1.1#" xmlns:cellml="http://www.cellml.org/cellml/1.1#">
+    <!-- define units
+================-->
+    <!-- Components
+================
+&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;- -->
+    <component name="lokta_volterra">
+        <!-- Variables
+ prey density -->
+        <variable initial_value="1" name="x1" units="dimensionless"/>
+        <!-- predator density-->
+        <variable initial_value="0.9" name="x2" units="dimensionless"/>
+        <variable name="t" units="second"/>
+        <!-- prey growth rate-->
+        <variable initial_value="0.6666" name="alpha" units="dimensionless"/>
+        <!-- predator attack rate-->
+        <variable initial_value="1.3333" name="beta" units="dimensionless"/>
+        <variable initial_value="1" name="gamma" units="dimensionless"/>
+        <variable initial_value="1" name="delta" units="dimensionless"/>
+        <!-- Equations-->
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+                <eq/>
+                <apply>
+                    <diff/>
+                    <bvar>
+                        <ci>t</ci>
+                    </bvar>
+                    <ci>x1</ci>
+                </apply>
+                <apply>
+                    <minus/>
+                    <apply>
+                        <times/>
+                        <ci>alpha</ci>
+                        <ci>x1</ci>
+                    </apply>
+                    <apply>
+                        <times/>
+                        <ci>beta</ci>
+                        <ci>x1</ci>
+                        <ci>x2</ci>
+                    </apply>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <apply>
+                    <diff/>
+                    <bvar>
+                        <ci>t</ci>
+                    </bvar>
+                    <ci>x2</ci>
+                </apply>
+                <apply>
+                    <minus/>
+                    <apply>
+                        <times/>
+                        <ci>gamma</ci>
+                        <ci>x1</ci>
+                        <ci>x2</ci>
+                    </apply>
+                    <apply>
+                        <times/>
+                        <ci>delta</ci>
+                        <ci>x2</ci>
+                    </apply>
+                </apply>
+            </apply>
+        </math>
+    </component>
+    <!-- Mapping
+================    -->
+</model>

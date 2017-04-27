@@ -1,0 +1,44 @@
+<?xml version='1.0'?>
+<model name="population_model" xmlns="http://www.cellml.org/cellml/1.1#" xmlns:cellml="http://www.cellml.org/cellml/1.1#">
+    <!-- define units
+================-->
+    <!-- Components
+================
+&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;- -->
+    <component name="logistic_equation">
+        <!-- Variables-->
+        <variable initial_value="85" name="x" units="dimensionless"/>
+        <variable name="t" units="second"/>
+        <variable initial_value="0.5" name="r" units="dimensionless"/>
+        <variable initial_value="100" name="K" units="dimensionless"/>
+        <!-- Equations-->
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+                <eq/>
+                <apply>
+                    <diff/>
+                    <bvar>
+                        <ci>t</ci>
+                    </bvar>
+                    <ci>x</ci>
+                </apply>
+                <apply>
+                    <times/>
+                    <ci>r</ci>
+                    <ci>x</ci>
+                    <apply>
+                        <minus/>
+                        <cn cellml:units="dimensionless">1</cn>
+                        <apply>
+                            <divide/>
+                            <ci>x</ci>
+                            <ci>K</ci>
+                        </apply>
+                    </apply>
+                </apply>
+            </apply>
+        </math>
+    </component>
+    <!-- Mapping
+================    -->
+</model>
